@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./Signup.css";
+import "./Signuppage.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { userRegister } from "../../redux/action/globalAction";
