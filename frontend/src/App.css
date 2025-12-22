@@ -1,0 +1,22 @@
+/* Make html and body take full height */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Full page gradient background */
+body {
+  background: linear-gradient(135deg, #5f94e9, #79868d, #321e2c);
+  width: 100%;
+  height: 100%;
+  background-size: cover; /* ensure it fills */
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* optional, keeps gradient fixed */
+}
+
+.layout {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}

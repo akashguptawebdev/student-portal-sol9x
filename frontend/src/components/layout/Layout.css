@@ -1,0 +1,48 @@
+/* Overall layout */
+.layout {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.layout-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 40px;
+  background-color: #6366f1;
+  color: white;
+  font-weight: 500;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.layout-header .logo {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.layout-header .nav-btn a {
+  margin-left: 24px;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.layout-header .nav-btn a:hover {
+  color: #dcd6ff;
+}
+
+/* Main content */
+.layout-content {
+  flex: 1;
+  padding: 20px 40px;
+}
+
+/* Footer */
+.layout-footer {
+  padding: 16px 40px;
+  background-color: #1f2937;
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+}

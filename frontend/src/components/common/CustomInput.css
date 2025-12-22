@@ -1,0 +1,56 @@
+.custom-input-row {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 16px;
+}
+
+.ci-label {
+  font-size: 14px;
+  color: #555;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.ci-field {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.3s ease;
+  background-color: #fff;
+  appearance: none; /* remove default arrow for select */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+/* Focus effect */
+.ci-field:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.15);
+}
+
+/* Disabled state */
+.custom-input-row.disabled .ci-field {
+  background-color: #f4f4f5;
+  cursor: not-allowed;
+  color: #777;
+}
+
+/* Hover effect for input/select */
+.ci-field:hover:not(:disabled) {
+  border-color: #a78bfa;
+}
+
+/* Add custom arrow for select */
+.ci-field[type="select"],
+select.ci-field {
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg width='14' height='8' viewBox='0 0 14 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L7 7L13 1' stroke='%236366F1' stroke-width='2'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 12px;
+  padding-right: 36px;
+}
