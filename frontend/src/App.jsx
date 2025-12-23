@@ -7,35 +7,83 @@ import AdminScreen from "./components/admin/AdminScreen";
 import StudentScreen from "./components/student/StudentScreen";
 import Layout from "./components/layout/Layout";
 
-function App() {
-  
-  
+/* =======================
+   Protected Route Wrapper
+======================= */
+const ProtectedRoute = ({ children, role }) => {
+  const user = JSON.parse(localStorage.getItem("user"));
 
+  // Not logged in
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
+
+  // Role mismatch
+  if (role && user.role !== role) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return children;
+};
+
+function App() {
+  const user = JSON.parse(localStorage.getItem("user"));
 
   return (
     <Routes>
-      {/* Default */}
-      <Route path="/" element={<Navigate to="/login" />} />
+      {/* Root Route */}
+      <Route
+        path="/"
+        element={
+          user ? (
+            <Navigate
+              to={user.role === "admin" ? "/admin" : "/user"}
+              replace
+            />
+          ) : (
+            <Navigate to="/login" replace />
+          )
+        }
+      />
 
-      {/* Auth */}
-      <Route path="/login" element={<LoginScreen />} />
+      {/* Auth Routes */}
+      <Route
+        path="/login"
+        element={
+          user ? (
+            <Navigate
+              to={user.role === "admin" ? "/admin" : "/user"}
+              replace
+            />
+          ) : (
+            <LoginScreen />
+          )
+        }
+      />
+
       <Route path="/signup" element={<SignupScreen />} />
 
-      {/* Role based screens wrapped with Layout */}
+      {/* Admin Route */}
       <Route
         path="/admin"
         element={
-          <Layout>
-            <AdminScreen />
-          </Layout>
+          <ProtectedRoute role="admin">
+            <Layout>
+              <AdminScreen />
+            </Layout>
+          </ProtectedRoute>
         }
       />
+
+      {/* User Route */}
       <Route
         path="/user"
         element={
-          <Layout>
-            <StudentScreen />
-          </Layout>
+          <ProtectedRoute role="user">
+            <Layout>
+              <StudentScreen />
+            </Layout>
+          </ProtectedRoute>
         }
       />
     </Routes>

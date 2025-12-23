@@ -8,6 +8,32 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.backend-wait {
+  background: #fff3cd;
+  border: 1px solid #ffeeba;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 4px solid #ddd;
+  border-top: 4px solid #ff9800;
+  border-radius: 50%;
+  margin: 0 auto 10px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
 /* Card */
 .login-card {
   background: #ffffff;
