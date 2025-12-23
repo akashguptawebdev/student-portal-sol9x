@@ -10,7 +10,7 @@ function LoginScreen() {
   const dispatch = useDispatch();
   const [backendUp, setBackendUp] = useState(false);
   const [checking, setChecking] = useState(true);
-  const [timer, setTimer] = useState(30);
+  const [timer, setTimer] = useState(40);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
