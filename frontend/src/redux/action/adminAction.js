@@ -19,7 +19,6 @@ export const adminGetAllStudents = () => async (dispatch) => {
     dispatch({ type: "ADMIN_STUDENTS_REQUEST" });
 
     const token = getAuthToken();
-    console.log("toeknr", token)
     const { data } = await axios.get(getAllStudentDetailsUrl, {
       headers: {
         Authorization: `Bearer ${token}`,

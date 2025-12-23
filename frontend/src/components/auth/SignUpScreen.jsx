@@ -15,10 +15,9 @@ function SignupScreen() {
   const [role, setRole] = useState("user");
 
   // 🔹 Redux state
-  const { loading, user, error } = useSelector(
-    (state) => state.userAuth
-  );
-
+   const { loading, user, error } = useSelector(
+      (state) => state.userAuth
+    );
   // 🔹 Submit handler
   const handleSignup = (e) => {
     e.preventDefault();
@@ -34,13 +33,13 @@ function SignupScreen() {
   };
 
   //ROLE BASED REDIRECT AFTER SIGNUP
-  useEffect(() => {
-    if (user?.role === "admin") {
-      navigate("/admin");
-    } else if (user?.role === "user") {
-      navigate("/user");
-    }
-  }, [user, navigate]);
+ useEffect(() => {
+     if (user?.role === "admin") {
+       navigate("/admin");
+     } else if (user?.role === "user") {
+       navigate("/user");
+     }
+   }, [user, navigate]);
 
   return (
     <div className="signup-container">

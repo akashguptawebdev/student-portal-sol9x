@@ -67,14 +67,22 @@ export const userRegister = (credentials) => async (dispatch) =>{
 
      dispatch({ type: "REGISTER_USER_DISPATCH" });
 
-    const response = await axios.post(signupAPI,
+    const {data} = await axios.post(signupAPI,
       credentials
     );
-      if(response?.data.success){
-          dispatch({ type: "USER_REGISTER_SUCCESS" , payload:response.data?.user });
-          localStorage.setItem("token", data.token);
-      }
+     if (data.success) {
+      // store user in Redux
+      dispatch({
+        type: "USER_LOGIN_SUCCESS",
+        payload: data.data, // only user
+      });
 
+      // store token separately
+      localStorage.setItem("token", data.token);
+
+      // persist user in localStorage for refresh
+      localStorage.setItem("user", JSON.stringify(data.data));
+    }
   }catch(error){
      dispatch({
       type: "USER_REGISTER_FAILED",
@@ -90,4 +98,5 @@ export const userLogout = () => (dispatch) => {
   localStorage.removeItem("token");
   localStorage.removeItem("user");
   dispatch({ type: "USER_LOGOUT" });
+  dispatch({ type: "RESET_DETAILS_SUCCESS" });
 };

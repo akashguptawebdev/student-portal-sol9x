@@ -4,7 +4,7 @@ const initialState = {
   loading: false,
   studentFormDetails: null,
   error: null,
-  allStudent:null
+  allStudent: null
 };
 
 export const appReducer = createReducer(initialState, (builder) => {
@@ -17,7 +17,7 @@ export const appReducer = createReducer(initialState, (builder) => {
       state.error = null;
     })
     .addCase("STUDENT_FETCH_SUCCESS", (state, action) => {
-      state.student = action.payload;
+      state.studentFormDetails = action.payload;
       state.loading = false;
     })
 
@@ -43,5 +43,11 @@ export const appReducer = createReducer(initialState, (builder) => {
     .addCase("ADMIN_STUDENTS_SUCCESS", (state, action) => {
       state.loading = false;
       state.allStudent = action.payload;
+    })
+    .addCase("RESET_DETAILS_SUCCESS", (state, action) => {
+      state.loading = false,
+        state.studentFormDetails = null,
+        state.error = null,
+        state.allStudent = null
     });
 });

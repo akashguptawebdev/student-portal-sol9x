@@ -16,7 +16,6 @@ export const getMyStudentProfile = () => async (dispatch) => {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log("data", data)
     if (data.success) {
       dispatch({
         type: "STUDENT_FETCH_SUCCESS",
@@ -52,7 +51,6 @@ export const updateStudentProfile = (updatedData) => async (dispatch) => {
       },
     });
 
-    console.log("updatedData", data);
 
     // Dispatch success only if backend responds with success: true
     if (data.success) {

@@ -34,7 +34,7 @@ export const signup = async (req, res) => {
     // 5. Send response
     res.status(201).json({
       success:true,
-      user: {
+      data: {
         _id: user._id,
         name: user.name,
         email: user.email,

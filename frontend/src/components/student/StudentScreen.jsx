@@ -10,7 +10,6 @@ function StudentScreen() {
 
   const { user } = useSelector((state) => state.userAuth);
   const { studentFormDetails } = useSelector((state) => state.appData);
-
   const COURSE_OPTIONS = [
     "MERN Bootcamp",
     "Full-Stack JavaScript",
@@ -25,7 +24,6 @@ function StudentScreen() {
     "Blockchain Development",
     "React Native Mobile Dev",
   ];
-console.log("studentFormDetails", studentFormDetails)
   const [student, setStudent] = useState({
     customerId: "",
     name: "",
@@ -38,7 +36,9 @@ console.log("studentFormDetails", studentFormDetails)
   useEffect(() => {
     dispatch(getMyStudentProfile());
   }, [dispatch]);
-
+  useEffect(()=>{
+    dispatch(getMyStudentProfile());
+  },[])
   // Populate form state when user/studentFormDetails updates
  useEffect(() => {
   if (!user) return;
@@ -84,7 +84,6 @@ console.log("studentFormDetails", studentFormDetails)
       course: student.course,
       enrollmentDate: student.enrollmentDate,
     };
-    console.log(updateData)
     dispatch(updateStudentProfile(updateData));
     setIsEdit(false);
   };

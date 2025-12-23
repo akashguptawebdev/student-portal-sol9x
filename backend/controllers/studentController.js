@@ -33,7 +33,10 @@ export const getMyStudentProfile = async (req, res) => {
       return res.status(404).json({ message: 'Student profile not found' });
     }
 
-    res.json(student);
+    res.json({
+      success:true,
+      student
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
